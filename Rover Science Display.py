@@ -1,7 +1,12 @@
+# Missouri University of Science and Technology: Mars Rover Design Team
 # Author: John Maruska
-# Created: May 2016
-# Updated: May 2016
-# For use with MRDT 2016-2017 Rover 
+# For use with MST-MRDT 2016-2017 Rover (as of yet unnamed)
+
+# TODO:
+# * Graph button command to generate graphs
+# * Check to make sure non-existent or non-compatible files are sent in
+# * 
+# * Refresh graphs on checkbox change? 
 
 import tkinter as tk
 from tkinter import ttk
@@ -9,10 +14,6 @@ import matplotlib
 matplotlib.use('TkAgg')
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 from matplotlib import pyplot as plt
-
-def genGraph():
-    # if Data-File selected and no file exist, print error and try again
-    pass
 
 root = tk.Tk()
 root.title("MRDT Science Display")
@@ -27,20 +28,25 @@ source.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
 input_type = tk.StringVar()
 
 file_name = tk.StringVar()
-file_entry = ttk.Entry(source, width=90, textvariable=file_name)
+file_entry = ttk.Entry(source, width=90, textvariable=file_name, state='disabled')
 file_entry.grid(column=3, row=0, sticky=(tk.W, tk.E))
 
-realtime = ttk.Radiobutton(source, text='Real-Time', variable=input_type,
-                           value='realtime', command=(file_entry.config(state="DISABLED")))
-realtime.grid(column=1, row=0, sticky=tk.W)
+def entry_toggle():
+    global input_type
+    if input_type.get() == 'realtime':
+        file_entry.config(state='disabled')
+    elif input_type.get() == 'datafile':
+        file_entry.config(state='active')
 
-data_file = ttk.Radiobutton(source, text='Data-File', variable=input_type,
-                            value='datafile', command=(file_entry.config(state="NORMAL")))
+realtime = ttk.Radiobutton(source, text='Real-Time', variable=input_type, value='realtime', command=entry_toggle)
+realtime.grid(column=1, row=0, sticky=tk.W)
+realtime.invoke()
+
+data_file = ttk.Radiobutton(source, text='Data-File', variable=input_type, value='datafile', command=entry_toggle)
 data_file.grid(column=2, row=0, sticky=tk.W)
 
-begin_button = ttk.Button(source, text='Graph', command=genGraph) #generate graph function required
-begin_button.grid(column=4, row=0, sticky=tk.W)
-
+graph_button = ttk.Button(source, text='Graph') #generate graph function required
+graph_button.grid(column=4, row=0, sticky=tk.W)
 
 ################################################
 #           Graph Input Frame                  #
@@ -61,10 +67,15 @@ tabs.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
 # Temp/Humid Graph area
 graph_area_TH = ttk.Frame(t1, padding="3 3 12 12")
 graph_area_TH.grid(column=1, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+
+################################################
+#          Actual PyPlot Figures               #   
+################################################
+
 # Temperature Figure
 figTH = plt.figure(1)
 plt.subplots_adjust(hspace=0.27, wspace=0.27, top=0.88, bottom=0.06)
-plt.suptitle("Soil Temperature Readings", fontsize=17)
+plt.suptitle("Soil Readings", fontsize=17)
 # Temperature Subplot
 plt.subplot(2,2,1)
 plt.title("Temperature Readings")
@@ -86,10 +97,15 @@ plt.title("Moisture Distribution")
 plt.ylabel("Occurances")
 plt.grid(True)
 
+# Attach back to Tkinter interface
 canvas = FigureCanvasTkAgg(figTH, master=graph_area_TH)
 canvas.show()
 canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 toolbar = NavigationToolbar2TkAgg(canvas, graph_area_TH)
+
+################################################
+#          Sidebar of Options                  #   
+################################################
 
 # Temp/Humid Graph Options
 graph_options_TH = ttk.Frame(t1, padding="3 3 12 12")
@@ -134,8 +150,9 @@ humid2.grid(column=0, row=6, sticky=(tk.N, tk.W, tk.E, tk.S))
 humid3.grid(column=0, row=7, sticky=(tk.N, tk.W, tk.E, tk.S))
 humid4.grid(column=0, row=8, sticky=(tk.N, tk.W, tk.E, tk.S))
 
-
-# CCD Graph
+################################################
+#             CCD GRAPH AREA                   #   
+################################################
 graph_area_CCD = ttk.Frame(t2, padding="3 3 12 12")
 graph_area_CCD.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
 

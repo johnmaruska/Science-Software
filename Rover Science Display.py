@@ -1,3 +1,8 @@
+# Author: John Maruska
+# Created: May 2016
+# Updated: May 2016
+# For use with MRDT 2016-2017 Rover 
+
 import tkinter as tk
 from tkinter import ttk
 import matplotlib
@@ -91,22 +96,44 @@ graph_options_TH = ttk.Frame(t1, padding="3 3 12 12")
 graph_options_TH.grid(column=2, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
 graph_label_TH = ttk.Label(graph_options_TH, text="Display Sensors:")
 graph_label_TH.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
-temp1 = ttk.Checkbutton(graph_options_TH, text='Temperature 1')
+
+# Create sensor checkbuttons
+show_temp1  = tk.BooleanVar()
+show_temp2  = tk.BooleanVar()
+show_temp3  = tk.BooleanVar()
+show_temp4  = tk.BooleanVar()
+show_humid1 = tk.BooleanVar()
+show_humid2 = tk.BooleanVar()
+show_humid3 = tk.BooleanVar()
+show_humid4 = tk.BooleanVar()
+show_temp1.set(False)
+show_temp2.set(False)
+show_temp3.set(False)
+show_temp4.set(False)
+show_humid1.set(False)
+show_humid2.set(False)
+show_humid3.set(False)
+show_humid4.set(False)
+
+temp1  = ttk.Checkbutton(graph_options_TH, var=show_temp1, text='Temperature 1')
+temp2  = ttk.Checkbutton(graph_options_TH, var=show_temp2, text='Temperature 2')
+temp3  = ttk.Checkbutton(graph_options_TH, var=show_temp3, text='Temperature 3')
+temp4  = ttk.Checkbutton(graph_options_TH, var=show_temp4, text='Temperature 4')
+humid1 = ttk.Checkbutton(graph_options_TH, var=show_humid1, text='Humidity 1')
+humid2 = ttk.Checkbutton(graph_options_TH, var=show_humid2, text='Humidity 2')
+humid3 = ttk.Checkbutton(graph_options_TH, var=show_humid3, text='Humidity 3')
+humid4 = ttk.Checkbutton(graph_options_TH, var=show_humid4, text='Humidity 4')
+
+# Attach checkbuttons to frame
 temp1.grid(column=0, row=1, sticky=(tk.N, tk.W, tk.E, tk.S))
-temp2 = ttk.Checkbutton(graph_options_TH, text='Temperature 2')
 temp2.grid(column=0, row=2, sticky=(tk.N, tk.W, tk.E, tk.S))
-temp3 = ttk.Checkbutton(graph_options_TH, text='Temperature 3')
 temp3.grid(column=0, row=3, sticky=(tk.N, tk.W, tk.E, tk.S))
-temp4 = ttk.Checkbutton(graph_options_TH, text='Temperature 4')
 temp4.grid(column=0, row=4, sticky=(tk.N, tk.W, tk.E, tk.S))
-humid1 = ttk.Checkbutton(graph_options_TH, text='Humidity 1')
 humid1.grid(column=0, row=5, sticky=(tk.N, tk.W, tk.E, tk.S))
-humid2 = ttk.Checkbutton(graph_options_TH, text='Humidity 2')
 humid2.grid(column=0, row=6, sticky=(tk.N, tk.W, tk.E, tk.S))
-humid3 = ttk.Checkbutton(graph_options_TH, text='Humidity 3')
 humid3.grid(column=0, row=7, sticky=(tk.N, tk.W, tk.E, tk.S))
-humid4 = ttk.Checkbutton(graph_options_TH, text='Humidity 4')
 humid4.grid(column=0, row=8, sticky=(tk.N, tk.W, tk.E, tk.S))
+
 
 # CCD Graph
 graph_area_CCD = ttk.Frame(t2, padding="3 3 12 12")

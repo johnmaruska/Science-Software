@@ -17,9 +17,9 @@ def genGraph():
 root = tk.Tk()
 root.title("MRDT Science Display")
 
-##############################################################################################
-#           Source Input Frame                                                               #
-##############################################################################################
+################################################
+#           Source Input Frame                 #
+################################################
 
 source = ttk.Frame(root, padding="3 3 12 12")
 source.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
@@ -42,9 +42,9 @@ begin_button = ttk.Button(source, text='Graph', command=genGraph) #generate grap
 begin_button.grid(column=4, row=0, sticky=tk.W)
 
 
-##############################################################################################
-#           Graph Input Frame                                                                #
-##############################################################################################
+################################################
+#           Graph Input Frame                  #
+################################################
 
 # Main graph frame
 graph_frame = ttk.Frame(root, padding="3 3 12 12")

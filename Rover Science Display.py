@@ -16,7 +16,8 @@ import tkinter as tk
 from tkinter import ttk
 import matplotlib
 matplotlib.use('TkAgg')
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.backends.backend_tkagg import NavigationToolbar2TkAgg
 from matplotlib import pyplot as plt
 
 root = tk.Tk()
@@ -42,6 +43,7 @@ site_humid4 = []
 ################################################
 
 def new_tab():
+    
     global site_count
     global digsite_tabs
     global current_fig_th
@@ -55,12 +57,15 @@ def new_tab():
     global site_humid3
     global site_humid4
     site_count = site_count + 1
+    
     # New main tab
     new_site = tk.Frame(digsites_tabs)
     digsites_tabs.add(new_site, text=("Digsite #" + str(site_count)))
+    
     # Main graph frame
     new_graph_frame = ttk.Frame(new_site)
     new_graph_frame.grid(column=0, row=1, sticky=(tk.N, tk.W, tk.E, tk.S))
+    
     # Sensor Type Tabs
     new_tabs = ttk.Notebook(new_graph_frame)
     new_th = ttk.Frame(new_tabs)
@@ -68,26 +73,31 @@ def new_tab():
     new_tabs.add(new_th, text='Temp/Humid')
     new_tabs.add(new_ccd, text='CCD')
     new_tabs.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    
     # Temp/Humid Graph area
     new_graph_area_th = ttk.Frame(new_th, padding="3 3 12 12")
     new_graph_area_th.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    
     # PyPlot Figures
     new_fig_th = current_fig_th
+    
     # attach back to Tkinter interface
     canvas = FigureCanvasTkAgg(new_fig_th, master=new_graph_area_th)
     canvas.show()
     canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
     toolbar = NavigationToolbar2TkAgg(canvas, new_graph_area_th)
+    
     # Temp/Humid Graph Options
     new_graph_options_th = ttk.Frame(new_th, padding="3 3 12 12")
     new_graph_options_th.grid(column=2, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
-    new_graph_label_th = ttk.Label(new_graph_options_th, text="Display Sensors:")
+    new_graph_label_th = ttk.Label(new_graph_options_th, text="Show Sensors:")
     new_graph_label_th.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    
     # Sidebar of Options
-    show_new_temp1  = tk.BooleanVar()
-    show_new_temp2  = tk.BooleanVar()
-    show_new_temp3  = tk.BooleanVar()
-    show_new_temp4  = tk.BooleanVar()
+    show_new_temp1 = tk.BooleanVar()
+    show_new_temp2 = tk.BooleanVar()
+    show_new_temp3 = tk.BooleanVar()
+    show_new_temp4 = tk.BooleanVar()
     show_new_humid1 = tk.BooleanVar()
     show_new_humid2 = tk.BooleanVar()
     show_new_humid3 = tk.BooleanVar()
@@ -108,15 +118,34 @@ def new_tab():
     site_humid2.append(show_new_humid2)
     site_humid3.append(show_new_humid3)
     site_humid4.append(show_new_humid4)
+    
     #Create checkbuttons
-    new_temp1  = ttk.Checkbutton(new_graph_options_th, var=site_temp1[site_count-1], text='Temperature 1')
-    new_temp2  = ttk.Checkbutton(new_graph_options_th, var=site_temp2[site_count-1], text='Temperature 2')
-    new_temp3  = ttk.Checkbutton(new_graph_options_th, var=site_temp3[site_count-1], text='Temperature 3')
-    new_temp4  = ttk.Checkbutton(new_graph_options_th, var=site_temp4[site_count-1], text='Temperature 4')
-    new_humid1 = ttk.Checkbutton(new_graph_options_th, var=site_humid1[site_count-1], text='Humidity 1')
-    new_humid2 = ttk.Checkbutton(new_graph_options_th, var=site_humid2[site_count-1], text='Humidity 2')
-    new_humid3 = ttk.Checkbutton(new_graph_options_th, var=site_humid3[site_count-1], text='Humidity 3')
-    new_humid4 = ttk.Checkbutton(new_graph_options_th, var=site_humid4[site_count-1], text='Humidity 4', padding="2 2 2 271")
+    new_temp1  = ttk.Checkbutton(new_graph_options_th,
+                                 var=site_temp1[site_count-1],
+                                 text='Temperature 1')
+    new_temp2  = ttk.Checkbutton(new_graph_options_th,
+                                 var=site_temp2[site_count-1],
+                                 text='Temperature 2')
+    new_temp3  = ttk.Checkbutton(new_graph_options_th,
+                                 var=site_temp3[site_count-1],
+                                 text='Temperature 3')
+    new_temp4  = ttk.Checkbutton(new_graph_options_th,
+                                 var=site_temp4[site_count-1],
+                                 text='Temperature 4')
+    new_humid1 = ttk.Checkbutton(new_graph_options_th,
+                                 var=site_humid1[site_count-1],
+                                 text='Humidity 1')
+    new_humid2 = ttk.Checkbutton(new_graph_options_th,
+                                 var=site_humid2[site_count-1],
+                                 text='Humidity 2')
+    new_humid3 = ttk.Checkbutton(new_graph_options_th,
+                                 var=site_humid3[site_count-1],
+                                 text='Humidity 3')
+    new_humid4 = ttk.Checkbutton(new_graph_options_th,
+                                 var=site_humid4[site_count-1],
+                                 text='Humidity 4',
+                                 padding="2 2 2 271")
+
     # Attach checkbuttons to frame
     new_temp1.grid(column=0, row=1, sticky=(tk.N, tk.W, tk.E, tk.S))
     new_temp2.grid(column=0, row=2, sticky=(tk.N, tk.W, tk.E, tk.S))
@@ -126,6 +155,7 @@ def new_tab():
     new_humid2.grid(column=0, row=6, sticky=(tk.N, tk.W, tk.E, tk.S))
     new_humid3.grid(column=0, row=7, sticky=(tk.N, tk.W, tk.E, tk.S))
     new_humid4.grid(column=0, row=8, sticky=(tk.N, tk.W, tk.E, tk.S))
+
     # Create CCD Graph area
     new_graph_area_ccd = ttk.Frame(new_ccd, padding="3 3 12 12")
     new_graph_area_ccd.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
@@ -259,14 +289,31 @@ show_current_humid2.set(False)
 show_current_humid3.set(False)
 show_current_humid4.set(False)
 
-current_temp1  = ttk.Checkbutton(current_graph_options_th, var=show_current_temp1, text='Temperature 1')
-current_temp2  = ttk.Checkbutton(current_graph_options_th, var=show_current_temp2, text='Temperature 2')
-current_temp3  = ttk.Checkbutton(current_graph_options_th, var=show_current_temp3, text='Temperature 3')
-current_temp4  = ttk.Checkbutton(current_graph_options_th, var=show_current_temp4, text='Temperature 4')
-current_humid1 = ttk.Checkbutton(current_graph_options_th, var=show_current_humid1, text='Humidity 1')
-current_humid2 = ttk.Checkbutton(current_graph_options_th, var=show_current_humid2, text='Humidity 2')
-current_humid3 = ttk.Checkbutton(current_graph_options_th, var=show_current_humid3, text='Humidity 3')
-current_humid4 = ttk.Checkbutton(current_graph_options_th, var=show_current_humid4, text='Humidity 4', padding="2 2 2 271")
+current_temp1 = ttk.Checkbutton(current_graph_options_th,
+                                var=show_current_temp1,
+                                text='Temperature 1')
+current_temp2 = ttk.Checkbutton(current_graph_options_th,
+                                var=show_current_temp2,
+                                text='Temperature 2')
+current_temp3 = ttk.Checkbutton(current_graph_options_th,
+                                var=show_current_temp3,
+                                text='Temperature 3')
+current_temp4 = ttk.Checkbutton(current_graph_options_th,
+                                var=show_current_temp4,
+                                text='Temperature 4')
+current_humid1 = ttk.Checkbutton(current_graph_options_th,
+                                 var=show_current_humid1,
+                                 text='Humidity 1')
+current_humid2 = ttk.Checkbutton(current_graph_options_th,
+                                 var=show_current_humid2,
+                                 text='Humidity 2')
+current_humid3 = ttk.Checkbutton(current_graph_options_th,
+                                 var=show_current_humid3,
+                                 text='Humidity 3')
+current_humid4 = ttk.Checkbutton(current_graph_options_th,
+                                 var=show_current_humid4,
+                                 text='Humidity 4',
+                                 padding="2 2 2 271")
 
 # Attach checkbuttons to frame
 current_temp1.grid(column=0, row=1, sticky=(tk.N, tk.W, tk.E, tk.S))

@@ -119,17 +119,17 @@ def new_tab():
     site_humid3.append(show_new_humid3)
     site_humid4.append(show_new_humid4)
     
-    #Create checkbuttons
-    new_temp1  = ttk.Checkbutton(new_graph_options_th,
+    # Create check-buttons
+    new_temp1 = ttk.Checkbutton(new_graph_options_th,
                                  var=site_temp1[site_count-1],
                                  text="Temperature 1")
-    new_temp2  = ttk.Checkbutton(new_graph_options_th,
+    new_temp2 = ttk.Checkbutton(new_graph_options_th,
                                  var=site_temp2[site_count-1],
                                  text="Temperature 2")
-    new_temp3  = ttk.Checkbutton(new_graph_options_th,
+    new_temp3 = ttk.Checkbutton(new_graph_options_th,
                                  var=site_temp3[site_count-1],
                                  text="Temperature 3")
-    new_temp4  = ttk.Checkbutton(new_graph_options_th,
+    new_temp4 = ttk.Checkbutton(new_graph_options_th,
                                  var=site_temp4[site_count-1],
                                  text="Temperature 4")
     new_humid1 = ttk.Checkbutton(new_graph_options_th,
@@ -146,7 +146,7 @@ def new_tab():
                                  text="Humidity 4",
                                  padding="2 2 2 271")
 
-    # Attach checkbuttons to frame
+    # Attach check-buttons to frame
     new_temp1.grid(column=0, row=1)
     new_temp2.grid(column=0, row=2)
     new_temp3.grid(column=0, row=3)
@@ -170,7 +170,7 @@ def save_graph():
     new_tab()
 
 ################################################
-#           Source Input Frame                 #
+#             Source Input Frame               #
 ################################################
 
 source = ttk.Frame(current_site, padding="3 3 12 12")
@@ -209,7 +209,7 @@ graph_button.grid(column=4, row=0, sticky=tk.W)
 current_graph_frame = ttk.Frame(current_site, padding="3 3 12 12")
 current_graph_frame.grid(column=0, row=2)
 
-# Tablature
+# Temp/Humid and CCD tabs
 tabs = ttk.Notebook(current_graph_frame)
 current_th = ttk.Frame(tabs)
 current_ccd = ttk.Frame(tabs)
@@ -230,7 +230,7 @@ graph_area_th.grid(column=1, row=0)
 current_fig_th = plt.figure(1)
 plt.subplots_adjust(hspace=0.27, wspace=0.27, top=0.88, bottom=0.06)
 plt.suptitle("Soil Readings", fontsize=17)
-# Temperature Subplot
+# Temperature Sub-plot
 plt.subplot(2,2,1)
 plt.title("Temperature Readings")
 plt.ylabel("Temperature (Celsius)")
@@ -238,7 +238,7 @@ plt.grid(True)
 # Temperature Distribution
 plt.subplot(2,2,2)
 plt.title("Temperature Distribution")
-plt.ylabel("Occurances")
+plt.ylabel("Occurrences")
 plt.grid(True)
 # Humidity Subplot
 plt.subplot(2,2,3)
@@ -248,7 +248,7 @@ plt.grid(True)
 # Humidity Distribution
 plt.subplot(2,2,4)
 plt.title("Moisture Distribution")
-plt.ylabel("Occurances")
+plt.ylabel("Occurrences")
 plt.grid(True)
 
 # Attach back to Tkinter interface
@@ -267,15 +267,15 @@ current_graph_options_th.grid(column=2, row=0)
 graph_label_TH = ttk.Label(current_graph_options_th, text="Display Sensors:")
 graph_label_TH.grid(column=0, row=0)
 
-# Save Digsite Graphs Button
+# Save Dig-site Graphs Button
 save_button = ttk.Button(current_graph_options_th, text="Store Graphs", command=save_graph)
 save_button.grid(column=0, row=10, sticky=tk.S)
 
-# Create sensor checkbuttons
-show_current_temp1  = tk.BooleanVar()
-show_current_temp2  = tk.BooleanVar()
-show_current_temp3  = tk.BooleanVar()
-show_current_temp4  = tk.BooleanVar()
+# Create sensor check-buttons
+show_current_temp1 = tk.BooleanVar()
+show_current_temp2 = tk.BooleanVar()
+show_current_temp3 = tk.BooleanVar()
+show_current_temp4 = tk.BooleanVar()
 show_current_humid1 = tk.BooleanVar()
 show_current_humid2 = tk.BooleanVar()
 show_current_humid3 = tk.BooleanVar()
@@ -315,7 +315,7 @@ current_humid4 = ttk.Checkbutton(current_graph_options_th,
                                  text="Humidity 4",
                                  padding="2 2 2 271")
 
-# Attach checkbuttons to frame
+# Attach check-buttons to frame
 current_temp1.grid(column=0, row=1)
 current_temp2.grid(column=0, row=2)
 current_temp3.grid(column=0, row=3)

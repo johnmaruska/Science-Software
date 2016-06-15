@@ -318,7 +318,12 @@ current_humid4 = ttk.Checkbutton(current_graph_options_th,
 # Attach checkbuttons to frame
 current_temp1.grid(column=0, row=1)
 current_temp2.grid(column=0, row=2)
+current_temp3.grid(column=0, row=3)
 current_temp4.grid(column=0, row=4)
+current_humid1.grid(column=0, row=5, sticky=tk.W)
+current_humid2.grid(column=0, row=6, sticky=tk.W)
+current_humid3.grid(column=0, row=7, sticky=tk.W)
+current_humid4.grid(column=0, row=8, sticky=tk.W)
 
 ################################################
 #             CCD GRAPH AREA                   #   

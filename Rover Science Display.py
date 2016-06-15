@@ -64,7 +64,7 @@ def new_tab():
     
     # Main graph frame
     new_graph_frame = ttk.Frame(new_site)
-    new_graph_frame.grid(column=0, row=1, sticky=(tk.N, tk.W, tk.E, tk.S))
+    new_graph_frame.grid(column=0, row=1)
     
     # Sensor Type Tabs
     new_tabs = ttk.Notebook(new_graph_frame)
@@ -72,11 +72,11 @@ def new_tab():
     new_ccd = ttk.Frame(new_tabs)
     new_tabs.add(new_th, text='Temp/Humid')
     new_tabs.add(new_ccd, text='CCD')
-    new_tabs.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    new_tabs.grid(column=0, row=0)
     
     # Temp/Humid Graph area
     new_graph_area_th = ttk.Frame(new_th, padding="3 3 12 12")
-    new_graph_area_th.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    new_graph_area_th.grid(column=0, row=0)
     
     # PyPlot Figures
     new_fig_th = current_fig_th
@@ -89,9 +89,9 @@ def new_tab():
     
     # Temp/Humid Graph Options
     new_graph_options_th = ttk.Frame(new_th, padding="3 3 12 12")
-    new_graph_options_th.grid(column=2, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    new_graph_options_th.grid(column=2, row=0)
     new_graph_label_th = ttk.Label(new_graph_options_th, text="Show Sensors:")
-    new_graph_label_th.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    new_graph_label_th.grid(column=0, row=0)
     
     # Sidebar of Options
     show_new_temp1 = tk.BooleanVar()
@@ -147,18 +147,18 @@ def new_tab():
                                  padding="2 2 2 271")
 
     # Attach checkbuttons to frame
-    new_temp1.grid(column=0, row=1, sticky=(tk.N, tk.W, tk.E, tk.S))
-    new_temp2.grid(column=0, row=2, sticky=(tk.N, tk.W, tk.E, tk.S))
-    new_temp3.grid(column=0, row=3, sticky=(tk.N, tk.W, tk.E, tk.S))
-    new_temp4.grid(column=0, row=4, sticky=(tk.N, tk.W, tk.E, tk.S))
-    new_humid1.grid(column=0, row=5, sticky=(tk.N, tk.W, tk.E, tk.S))
-    new_humid2.grid(column=0, row=6, sticky=(tk.N, tk.W, tk.E, tk.S))
-    new_humid3.grid(column=0, row=7, sticky=(tk.N, tk.W, tk.E, tk.S))
-    new_humid4.grid(column=0, row=8, sticky=(tk.N, tk.W, tk.E, tk.S))
+    new_temp1.grid(column=0, row=1)
+    new_temp2.grid(column=0, row=2)
+    new_temp3.grid(column=0, row=3)
+    new_temp4.grid(column=0, row=4)
+    new_humid1.grid(column=0, row=5, sticky=tk.W)
+    new_humid2.grid(column=0, row=6, sticky=tk.W)
+    new_humid3.grid(column=0, row=7, sticky=tk.W)
+    new_humid4.grid(column=0, row=8, sticky=tk.W)
 
     # Create CCD Graph area
     new_graph_area_ccd = ttk.Frame(new_ccd, padding="3 3 12 12")
-    new_graph_area_ccd.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    new_graph_area_ccd.grid(column=0, row=0)
     new_fig_ccd = current_fig_ccd
     canvas = FigureCanvasTkAgg(new_fig_ccd, master=new_graph_area_ccd)
     canvas.show()
@@ -174,7 +174,7 @@ def save_graph():
 ################################################
 
 source = ttk.Frame(current_site, padding="3 3 12 12")
-source.grid(column=0, row=1, sticky=(tk.N, tk.W, tk.E, tk.S))
+source.grid(column=0, row=1)
 
 input_type = tk.StringVar()
 
@@ -207,7 +207,7 @@ graph_button.grid(column=4, row=0, sticky=tk.W)
 
 # Main graph frame
 current_graph_frame = ttk.Frame(current_site, padding="3 3 12 12")
-current_graph_frame.grid(column=0, row=2, sticky=(tk.N, tk.W, tk.E, tk.S))
+current_graph_frame.grid(column=0, row=2)
 
 # Tablature
 tabs = ttk.Notebook(current_graph_frame)
@@ -215,11 +215,11 @@ current_th = ttk.Frame(tabs)
 current_ccd = ttk.Frame(tabs)
 tabs.add(current_th, text='Temp/Humid')
 tabs.add(current_ccd, text='CCD')
-tabs.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+tabs.grid(column=0, row=0)
 
 # Temp/Humid Graph area
 graph_area_th = ttk.Frame(current_th, padding="3 3 12 12")
-graph_area_th.grid(column=1, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+graph_area_th.grid(column=1, row=0)
 
 
 ################################################
@@ -263,9 +263,9 @@ toolbar = NavigationToolbar2TkAgg(canvas, graph_area_th)
 
 # Temp/Humid Graph Options
 current_graph_options_th = ttk.Frame(current_th, padding="3 3 12 12")
-current_graph_options_th.grid(column=2, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+current_graph_options_th.grid(column=2, row=0)
 graph_label_TH = ttk.Label(current_graph_options_th, text="Display Sensors:")
-graph_label_TH.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+graph_label_TH.grid(column=0, row=0)
 
 # Save Digsite Graphs Button
 save_button = ttk.Button(current_graph_options_th, text='Store Graphs', command=save_graph)
@@ -316,21 +316,16 @@ current_humid4 = ttk.Checkbutton(current_graph_options_th,
                                  padding="2 2 2 271")
 
 # Attach checkbuttons to frame
-current_temp1.grid(column=0, row=1, sticky=(tk.N, tk.W, tk.E, tk.S))
-current_temp2.grid(column=0, row=2, sticky=(tk.N, tk.W, tk.E, tk.S))
-current_temp3.grid(column=0, row=3, sticky=(tk.N, tk.W, tk.E, tk.S))
-current_temp4.grid(column=0, row=4, sticky=(tk.N, tk.W, tk.E, tk.S))
-current_humid1.grid(column=0, row=5, sticky=(tk.N, tk.W, tk.E, tk.S))
-current_humid2.grid(column=0, row=6, sticky=(tk.N, tk.W, tk.E, tk.S))
-current_humid3.grid(column=0, row=7, sticky=(tk.N, tk.W, tk.E, tk.S))
-current_humid4.grid(column=0, row=8, sticky=(tk.N, tk.W, tk.E, tk.S))
+current_temp1.grid(column=0, row=1)
+current_temp2.grid(column=0, row=2)
+current_temp4.grid(column=0, row=4)
 
 ################################################
 #             CCD GRAPH AREA                   #   
 ################################################
 
 graph_area_ccd = ttk.Frame(current_ccd, padding="3 3 12 12")
-graph_area_ccd.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+graph_area_ccd.grid(column=0, row=0)
 
 current_fig_ccd = plt.figure(2)
 plt.title("Raman Spectrometer Reading")

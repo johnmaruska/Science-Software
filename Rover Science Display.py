@@ -15,7 +15,7 @@
 import tkinter as tk
 from tkinter import ttk
 import matplotlib
-matplotlib.use('TkAgg')
+matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.backends.backend_tkagg import NavigationToolbar2TkAgg
 from matplotlib import pyplot as plt
@@ -70,8 +70,8 @@ def new_tab():
     new_tabs = ttk.Notebook(new_graph_frame)
     new_th = ttk.Frame(new_tabs)
     new_ccd = ttk.Frame(new_tabs)
-    new_tabs.add(new_th, text='Temp/Humid')
-    new_tabs.add(new_ccd, text='CCD')
+    new_tabs.add(new_th, text="Temp/Humid")
+    new_tabs.add(new_ccd, text="CCD")
     new_tabs.grid(column=0, row=0)
     
     # Temp/Humid Graph area
@@ -122,28 +122,28 @@ def new_tab():
     #Create checkbuttons
     new_temp1  = ttk.Checkbutton(new_graph_options_th,
                                  var=site_temp1[site_count-1],
-                                 text='Temperature 1')
+                                 text="Temperature 1")
     new_temp2  = ttk.Checkbutton(new_graph_options_th,
                                  var=site_temp2[site_count-1],
-                                 text='Temperature 2')
+                                 text="Temperature 2")
     new_temp3  = ttk.Checkbutton(new_graph_options_th,
                                  var=site_temp3[site_count-1],
-                                 text='Temperature 3')
+                                 text="Temperature 3")
     new_temp4  = ttk.Checkbutton(new_graph_options_th,
                                  var=site_temp4[site_count-1],
-                                 text='Temperature 4')
+                                 text="Temperature 4")
     new_humid1 = ttk.Checkbutton(new_graph_options_th,
                                  var=site_humid1[site_count-1],
-                                 text='Humidity 1')
+                                 text="Humidity 1")
     new_humid2 = ttk.Checkbutton(new_graph_options_th,
                                  var=site_humid2[site_count-1],
-                                 text='Humidity 2')
+                                 text="Humidity 2")
     new_humid3 = ttk.Checkbutton(new_graph_options_th,
                                  var=site_humid3[site_count-1],
-                                 text='Humidity 3')
+                                 text="Humidity 3")
     new_humid4 = ttk.Checkbutton(new_graph_options_th,
                                  var=site_humid4[site_count-1],
-                                 text='Humidity 4',
+                                 text="Humidity 4",
                                  padding="2 2 2 271")
 
     # Attach checkbuttons to frame
@@ -179,26 +179,26 @@ source.grid(column=0, row=1)
 input_type = tk.StringVar()
 
 file_name = tk.StringVar()
-file_entry = ttk.Entry(source, width=90, textvariable=file_name, state='disabled')
+file_entry = ttk.Entry(source, width=90, textvariable=file_name, state="disabled")
 file_entry.grid(column=3, row=0, sticky=(tk.W, tk.E))
 
 def entry_toggle():
     global input_type
-    if input_type.get() == 'realtime':
-        file_entry.config(state='disabled')
-    elif input_type.get() == 'datafile':
-        file_entry.config(state='active')
+    if input_type.get() == "realtime":
+        file_entry.config(state="disabled")
+    elif input_type.get() == "datafile":
+        file_entry.config(state="active")
 
-realtime = ttk.Radiobutton(source, text='Real-Time', variable=input_type,
-                           value='realtime', command=entry_toggle)
+realtime = ttk.Radiobutton(source, text="Real-Time", variable=input_type,
+                           value="realtime", command=entry_toggle)
 realtime.grid(column=1, row=0, sticky=tk.W)
 realtime.invoke()
 
-data_file = ttk.Radiobutton(source, text='Data-File', variable=input_type,
-                            value='datafile', command=entry_toggle)
+data_file = ttk.Radiobutton(source, text="Data-File", variable=input_type,
+                            value="datafile", command=entry_toggle)
 data_file.grid(column=2, row=0, sticky=tk.W)
 
-graph_button = ttk.Button(source, text='Graph') #generate graph function required
+graph_button = ttk.Button(source, text="Graph") #generate graph function required
 graph_button.grid(column=4, row=0, sticky=tk.W)
 
 ################################################
@@ -213,8 +213,8 @@ current_graph_frame.grid(column=0, row=2)
 tabs = ttk.Notebook(current_graph_frame)
 current_th = ttk.Frame(tabs)
 current_ccd = ttk.Frame(tabs)
-tabs.add(current_th, text='Temp/Humid')
-tabs.add(current_ccd, text='CCD')
+tabs.add(current_th, text="Temp/Humid")
+tabs.add(current_ccd, text="CCD")
 tabs.grid(column=0, row=0)
 
 # Temp/Humid Graph area
@@ -268,7 +268,7 @@ graph_label_TH = ttk.Label(current_graph_options_th, text="Display Sensors:")
 graph_label_TH.grid(column=0, row=0)
 
 # Save Digsite Graphs Button
-save_button = ttk.Button(current_graph_options_th, text='Store Graphs', command=save_graph)
+save_button = ttk.Button(current_graph_options_th, text="Store Graphs", command=save_graph)
 save_button.grid(column=0, row=10, sticky=tk.S)
 
 # Create sensor checkbuttons
@@ -291,28 +291,28 @@ show_current_humid4.set(False)
 
 current_temp1 = ttk.Checkbutton(current_graph_options_th,
                                 var=show_current_temp1,
-                                text='Temperature 1')
+                                text="Temperature 1")
 current_temp2 = ttk.Checkbutton(current_graph_options_th,
                                 var=show_current_temp2,
-                                text='Temperature 2')
+                                text="Temperature 2")
 current_temp3 = ttk.Checkbutton(current_graph_options_th,
                                 var=show_current_temp3,
-                                text='Temperature 3')
+                                text="Temperature 3")
 current_temp4 = ttk.Checkbutton(current_graph_options_th,
                                 var=show_current_temp4,
-                                text='Temperature 4')
+                                text="Temperature 4")
 current_humid1 = ttk.Checkbutton(current_graph_options_th,
                                  var=show_current_humid1,
-                                 text='Humidity 1')
+                                 text="Humidity 1")
 current_humid2 = ttk.Checkbutton(current_graph_options_th,
                                  var=show_current_humid2,
-                                 text='Humidity 2')
+                                 text="Humidity 2")
 current_humid3 = ttk.Checkbutton(current_graph_options_th,
                                  var=show_current_humid3,
-                                 text='Humidity 3')
+                                 text="Humidity 3")
 current_humid4 = ttk.Checkbutton(current_graph_options_th,
                                  var=show_current_humid4,
-                                 text='Humidity 4',
+                                 text="Humidity 4",
                                  padding="2 2 2 271")
 
 # Attach checkbuttons to frame
